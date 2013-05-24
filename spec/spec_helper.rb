@@ -2,6 +2,8 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+
+# This has to be commented out to make zeus work
 # require 'rspec/autorun'
 
 # Requires supporting ruby files with custom matchers and macros, etc,

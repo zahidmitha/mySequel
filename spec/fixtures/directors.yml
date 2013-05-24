@@ -1,3 +1,24 @@
 yates:
   name: David Yates
   born: 1963
+jackson:
+  name: Peter Jackson
+  born: 1961
+black:
+  name: Shane Black
+  born: 1961
+unkrich:
+  name: Lee Unkrich
+  born: 1967
+verbinski:
+  name: Gore Verbinski
+  born: 1964
+marshall:
+  name: Rob Marshall
+  born: 1960
+spielberg:
+  name: Steven Spielberg
+  born: 1946
+tamahori:
+  name: Lee Tamahori
+  born: 1950

@@ -5,6 +5,6 @@ describe Director do
   it { should have_many :sequels }
 
   it "has fixtures inserted into the database" do
-    Director.count.should eq 1
+    Director.count.should eq 8
   end
 end

@@ -20,16 +20,14 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'shoulda-matchers'
-  gem 'guard-rspec'
+group :development do
   gem 'quiet_assets'
   gem 'httparty'
   gem 'debugger'
 end
 
 group :test do
+  gem 'zeus'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'guard-rspec'

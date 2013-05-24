@@ -4,3 +4,73 @@ harry_potter_and_the_deathly_hallows_part_2:
   year: 2011
   director: david_yates
   genres: adventure, drama, fantasy, mystery
+
+lord_of_the_rings_return:
+  title: "The Lord of the Rings: The Return of the King"
+  gross_earnings: 1119929521
+  year: 2003
+  director: jackson
+  genres: action, adventure, fantasy
+
+iron_man_3:
+  title: "Iron Man 3"
+  gross_earnings: 1079820220
+  year: 2013
+  genres: action, adventure, sci_fi
+  director: black
+
+toy_story_3:
+  title: "Toy Story 3"
+  gross_earnings: 1063171911
+  year: 2010
+  genres: animation, adventure, comedy, fantasy
+  director: unkrich
+
+pirates_of_the_caribbean_dead:
+  title: "Pirates of the Caribbean: Dead Man's Chest"
+  gross_earnings: 1063171911
+  year: 2006
+  genres: action, adventure, fantasy
+  director: verbinski
+
+pirates_of_the_caribbean_stranger:
+  title: "Pirates of the Caribbean: On Stranger Tides"
+  gross_earnings: 1043871802
+  year: 2011
+  genres: action, adventure, fantasy
+  director: marshall
+
+lord_of_the_rings_towers:
+  title: "Lord of the Rings: The Two Towers"
+  gross_earnings: 926047111
+  year: 2002
+  genres: action, adventure, fantasy
+  director: jackson
+
+indiana_jones_temple:
+  title: "Indiana Jones and the Temple of Doom"
+  gross_earnings: 197870271
+  year: 1984
+  genres: action, adventure
+  director: spielberg
+
+indiana_jones_last:
+  title: "Indiana Jones and the Last Crusade"
+  gross_earnings: 197171806
+  year: 1989
+  genres: action, adventure
+  director: spielberg
+
+indiana_jones_crystal:
+  title: "Indiana Jones and the Kingdom of the Crystal Skull"
+  gross_earnings: 317011114
+  year: 2008
+  genres: action, adventure
+  director: spielberg
+
+xxx_2:
+  title: "xXx 2: The Next Level"
+  gross_earnings: 26082914
+  year: 2005
+  genres: action, adventure
+  director: tamahori

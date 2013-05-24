@@ -1,3 +1,9 @@
+action:
+  name: Action
+sci_fi:
+  name: Sci-Fi
+comedy:
+  name: Comedy
 adventure:
   name: Adventure
 drama:

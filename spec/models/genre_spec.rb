@@ -5,6 +5,6 @@ describe Genre do
   it { should have_and_belong_to_many :sequels }
 
   it "has fixtures inserted into the database" do
-    Genre.count.should eq 4
+    Genre.count.should eq 7
   end
 end
