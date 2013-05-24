@@ -22,11 +22,17 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
   gem 'guard-rspec'
   gem 'quiet_assets'
   gem 'httparty'
-  gem 'shoulda-matchers'
   gem 'debugger'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'guard-rspec'
 end
 
 gem 'json'

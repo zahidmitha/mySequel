@@ -3,7 +3,8 @@ class CreateTables < ActiveRecord::Migration
 
     create_table :directors do |t|
       t.string :name
-      t.date :born
+      # This is just the year so we don't need a date column really
+      t.integer :born
     end
 
     create_table :sequels do |t|
@@ -14,8 +15,8 @@ class CreateTables < ActiveRecord::Migration
     end
 
     create_table :genres_sequels do |t|
-      t.references :genres
-      t.references :sequels
+      t.references :genre
+      t.references :sequel
     end
 
     create_table :genres do |t|

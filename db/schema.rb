@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(:version => 20130523133006) do
 
   create_table "directors", :force => true do |t|
-    t.string "name"
-    t.date   "born"
+    t.string  "name"
+    t.integer "born"
   end
 
   create_table "genres", :force => true do |t|
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20130523133006) do
   end
 
   create_table "genres_sequels", :force => true do |t|
-    t.integer "genres_id"
-    t.integer "sequels_id"
+    t.integer "genre_id"
+    t.integer "sequel_id"
   end
 
   create_table "sequels", :force => true do |t|

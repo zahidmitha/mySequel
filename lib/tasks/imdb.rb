@@ -2,6 +2,7 @@ require 'httparty'
 require 'debugger'
 require 'json'
 
+# Some helper methods
 def normalize(str)
   str.gsub(/[\.\:\(\)]/, "").gsub(" ", "_").downcase
 end
@@ -11,6 +12,7 @@ def insert(data, file)
 
   File.open(file_path, "a+"){|f| f << data }
 end
+
 
 puts "what's your title?"
 title = URI.escape(gets)
@@ -60,7 +62,7 @@ puts "______________________________________________\n\n"
 
 
 film = "#{normalize(title)}:
-  title: #{title}
+  title: \"#{title}\"
   gross_earnings: #{gross}
   year: #{choice["year"]}
   director: #{director_key}
