@@ -24,8 +24,12 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'quiet_assets'
+  gem 'httparty'
+  gem 'shoulda-matchers'
+  gem 'debugger'
 end
 
+gem 'json'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
