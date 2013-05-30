@@ -53,7 +53,7 @@ director =  "#{director_key}:
   born:
 \n"
 
-insert(director, 'director')
+insert(director, 'directors')
 
 puts director
 puts "______________________________________________"
@@ -70,6 +70,8 @@ film = "#{normalize(title)}:
 "
 
 puts film
+insert(film, 'sequels')
+
 
 puts "______________________________________________"
 puts "genres.yml"
@@ -80,7 +82,7 @@ genre_text = genres.to_a.inject("") do |str, values|
   name: #{values.last}\n"
 end
 
-insert(genre_text, 'genre')
+insert(genre_text, 'genres')
 
 puts genre_text
 

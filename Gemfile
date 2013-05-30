@@ -26,7 +26,7 @@ group :development do
   gem 'debugger'
 end
 
-group :test do
+group :development, :test do
   gem 'zeus'
   gem 'rspec-rails'
   gem 'shoulda-matchers'

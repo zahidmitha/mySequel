@@ -74,3 +74,10 @@ xxx_2:
   year: 2005
   genres: action, adventure
   director: tamahori
+
+shrek_forever_after:
+  title: "Shrek Forever After"
+  gross_earnings: 238371987
+  year: 2010
+  director: mike_mitchell
+  genres: action, adventure, comedy, fantasy
