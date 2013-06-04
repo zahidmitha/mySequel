@@ -48,12 +48,59 @@ describe 'SQL Exercises' do
   context 'COUNT' do
     it "counts the number of action films" do
       pending
-      Sequels.total_by_genre("Action").should eq 10
+      Sequel.total_by_genre("Action").should eq 10
     end
 
     it "counts the number of fantasy films" do
       pending
-      Sequels.total_by_genre("Fantasy").should eq 7
+      Sequel.total_by_genre("Fantasy").should eq 7
+    end
+  end
+
+  context "AVG" do
+    it "works out the average made for a Spielberg sequel" do
+      pending
+      # Convert this to an integer just to make things easier
+      Sequel.average_gross_for("Steven Spielberg").should eq 237351063
+    end
+  end
+
+  context 'MIN' do
+    it "works out the minimum made by Peter Jackson" do
+      pending
+      Sequel.minimum_made_by("Peter Jackson").should eq 926047111
+    end
+  end
+
+  context 'MAX' do
+    it "works out the maximum made by a film before 2000" do
+      pending
+      Sequel.maximum_gross_before(2000).should eq 197870271
+    end
+  end
+
+  context 'harder exercises' do
+
+    it "finds the most earned by an action movie directed by Spielberg" do
+      pending
+      # This one is actually quite easy if you use the joins() method to help you
+      Sequel.highest_grossing_by_genre_and_director("Action", "Steven Spielberg").should eq 317011114
+    end
+
+    it "finds genres with more than one film attached to them" do
+      pending
+      # Make this return just an array with the tag names
+      # This one is hard but easier if you just use find_by_sql() and then map() on the result
+      # you'll need to do two joins and use HAVING
+      Genre.with_more_than_one_film.should eq ["Action", "Comedy", "Fantasy", "Adventure"]
+    end
+
+    let(:expected_genres) { {"Action"=>"6209348657", "Adventure"=>"7653531787", "Fantasy"=>"5835575462"} }
+
+    it "finds tags that have earned more than 5 billion" do
+      pending
+      # If you use the built in sum() method it should come back like this if you're grouping them properly
+      Genre.earned_more_than(5000000000).should eq expected_genres
     end
   end
 
