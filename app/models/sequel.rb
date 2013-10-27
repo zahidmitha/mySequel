@@ -18,29 +18,34 @@ class Sequel < ActiveRecord::Base
       # for the active record helpers
       # but it is pretty ugly and unwieldy
       #
-      # find_by_sql(["SELECT COUNT(*) AS count FROM sequels INNER JOIN directors ON directors.id = sequels.director_id WHERE directors.name = ?", director]).first.count.to_i
+      find_by_sql(["SELECT COUNT(*) AS count FROM sequels INNER JOIN directors ON directors.id = sequels.director_id WHERE directors.name = ?", director]).first.count.to_i
 
       # The neatest way of doing it, but remember this won't work for more complex queries
-      joins(:director).where("directors.name" => director).count
+      # joins(:director).where("directors.name" => director).count
     end
 
     def total_gross
 
-      find_by_sql("SELECT SUM(gross_earnings) FROM sequels")
+      find_by_sql(["SELECT SUM(gross_earnings) from sequels"])[0].attributes["sum"].to_i
 
       # sum("gross_earnings")
 
     end
 
     def total_gross_by_year_after(year)
-      find_by_sql("SELECT year, gross_earnings FROM sequels WHERE year > ? GROUP BY year", year)
+      # find_by_sql("SELECT year, gross_earnings FROM sequels WHERE year > ? GROUP BY year", year)
 
-      # select("year, gross_earnings)").where("year > ?", year).group("year")
+      where("year > ?", year).group("year").sum("gross_earnings")
 
     end
 
     def total_by_genre(genre)
-      find_by_sql("SELECT COUNT(*) FROM sequels INNER JOIN genres_sequels ON genres_sequels.sequel_id = sequels.id INNER JOIN genres ON genres.id = genres_sequels.genre_id WHERE genres.name = ?", genre)
+
+        joins(:genres)
+        .where("genres.name = ?", genre)
+        .count
+
+      # find_by_sql("SELECT COUNT(*) FROM sequels INNER JOIN genres_sequels ON genres_sequels.sequel_id = sequels.id INNER JOIN genres ON genres.id = genres_sequels.genre_id WHERE genres.name = ?", genre)
 
         # where("genre = ?", genre).count.genres
         # where("genre = ?", genre).count.joins("INNER JOIN genres_sequels ON genres_sequels.sequel_id = sequels.id INNER JOIN genres ON genres.id = genres_sequels.genre_id")
@@ -48,21 +53,52 @@ class Sequel < ActiveRecord::Base
     end
 
     def average_gross_for(director)
-      find_by_sql("SELECT AVG(sequels.gross_earnings) FROM sequels INNER JOIN directors ON directors.id = sequels.director_id WHERE directors.name = ?", director).to_i
+
+
+      joins(:director)
+      .where("directors.name = ?", director)
+      .average("gross_earnings")
+      .to_i
+
+      # find_by_sql("SELECT AVG(sequels.gross_earnings) FROM sequels INNER JOIN directors ON directors.id = sequels.director_id WHERE directors.name = ?", director).to_i
+      # select avg(gross_earnings) from sequels INNER JOIN directors on sequels.director_id = directors.id where directors.name = 'Steven Spielberg';
+
     end
 
 
     def minimum_made_by(director)
-      find_by_sql("SELECT MIN(sequels.gross_earnings) FROM sequels INNER JOIN directors ON directors.id = sequels.director_id WHERE directors.name = ?", director).to_i
+        
+        joins(:director)
+        .where("directors.name = ?", director)
+        .minimum("gross_earnings")
+
+         # select min(gross_earnings) from sequels inner join directors on sequels.director_id = directors.id where directors.name = 'Peter Jackson';      
 
     end
 
     def maximum_gross_before(year)
-      find_by_sql("SELECT MAX(gross_earnings) FROM sequels WHERE year < ?", year).to_i
+        
+        where("year < ?", year)
+        .maximum("gross_earnings")
+
+        #select max(gross_earnings) from sequels where year < 2000;
+
+
     end
 
     def highest_grossing_by_genre_and_director(genre, director)
-      find_by_sql("SELECT MAX(sequels.gross_earnings) FROM sequels INNER JOIN directors ON directors.id = sequels.director_id INNER JOIN genres_sequels ON genres_sequels.sequel_id = sequels.id INNER JOIN genres ON genres.id = genres_sequels.genre_id WHERE genres.name = ? AND directors.name = ?", genre, director).to_i
+      
+      joins(:director)
+      .joins(:genres)
+      .where("genres.name" => genre)
+      .where("directors.name = ?", director)
+      .maximum("sequels.gross_earnings")
+
+      # NOTE: For the where clause you can do either injection
+      # with ? or use =>
+
+      # select max("gross_earnings") from sequels inner join directors on sequels.director_id = directors.id inner join genres_sequels on sequels.id = genres_sequels.sequel_id inner join genres on genres_sequels.genre_id = genres.id where genres.name = 'Action' and directors.name = 'Steven Spielberg';
+
 
     end
 
