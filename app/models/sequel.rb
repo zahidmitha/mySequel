@@ -41,11 +41,11 @@ class Sequel < ActiveRecord::Base
 
     def total_by_genre(genre)
 
-        joins(:genres)
-        .where("genres.name = ?", genre)
-        .count
+      #   joins(:genres)
+      #   .where("genres.name = ?", genre)
+      #   .count
 
-      # find_by_sql("SELECT COUNT(*) FROM sequels INNER JOIN genres_sequels ON genres_sequels.sequel_id = sequels.id INNER JOIN genres ON genres.id = genres_sequels.genre_id WHERE genres.name = ?", genre)
+      # find_by_sql("SELECT COUNT(*) AS count FROM sequels INNER JOIN genres_sequels ON genres_sequels.sequel_id = sequels.id INNER JOIN genres ON genres.id = genres_sequels.genre_id WHERE genres.name = ?", genre)
 
         # where("genre = ?", genre).count.genres
         # where("genre = ?", genre).count.joins("INNER JOIN genres_sequels ON genres_sequels.sequel_id = sequels.id INNER JOIN genres ON genres.id = genres_sequels.genre_id")
